@@ -69,7 +69,7 @@ Additional languages planned for future releases.
 ### Quick Setup (npm)
 
 ```bash
-npm install -g textswift
+npm install -g @textswift/textswift
 ```
 
 This automatically:

@@ -1,7 +1,10 @@
 {
-  "name": "textswift",
-  "version": "0.1.0",
+  "name": "@textswift/textswift",
+  "version": "0.1.1",
   "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
   "description": "TextSwift Chrome extension for in-page translation",
   "author": "baekenough",
   "license": "MIT",
@@ -18,7 +21,7 @@
     "native-messaging"
   ],
   "bin": {
-    "textswift": "./dist/cli/setup.js"
+    "textswift": "dist/cli/setup.js"
   },
   "files": [
     "dist/",

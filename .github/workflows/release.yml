@@ -31,7 +31,7 @@ jobs:
         run: npm run build
 
       - name: Publish to npm
-        run: npm publish
+        run: npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
@@ -46,5 +46,5 @@ jobs:
         run: |
           echo "## Release Published" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
-          echo "- **npm**: textswift@${{ steps.version.outputs.version }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **npm**: @textswift/textswift@${{ steps.version.outputs.version }}" >> $GITHUB_STEP_SUMMARY
           echo "- **tag**: ${{ steps.version.outputs.tag }}" >> $GITHUB_STEP_SUMMARY
