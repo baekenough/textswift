@@ -1,0 +1,290 @@
+#textswift-root {
+  position: fixed;
+  inset: 0;
+  z-index: 2147483647;
+  pointer-events: none;
+  font-family: "Space Grotesk", "Segoe UI", "Helvetica Neue", sans-serif;
+  color: #f7fafc;
+}
+
+#textswift-root button,
+#textswift-root select,
+#textswift-root textarea {
+  font: inherit;
+}
+
+.textswift-dock {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  pointer-events: auto;
+}
+
+.textswift-fab {
+  width: 52px;
+  height: 52px;
+  border-radius: 16px;
+  border: 1px solid rgba(248, 250, 252, 0.2);
+  background: linear-gradient(150deg, #0b1723, #1b4964);
+  color: #d8f2ff;
+  font-size: 18px;
+  font-weight: 700;
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.45);
+  cursor: pointer;
+  transition: transform 140ms ease, box-shadow 140ms ease;
+}
+
+.textswift-fab:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.55);
+}
+
+.textswift-panel {
+  width: 360px;
+  margin-top: 10px;
+  border-radius: 18px;
+  border: 1px solid rgba(181, 220, 255, 0.23);
+  background: radial-gradient(circle at top, #0f2335, #071017 70%);
+  box-shadow: 0 22px 40px rgba(0, 0, 0, 0.55);
+  overflow: hidden;
+}
+
+.textswift-hidden {
+  display: none !important;
+}
+
+.textswift-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 14px;
+  border-bottom: 1px solid rgba(181, 220, 255, 0.14);
+}
+
+.textswift-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #c3eaff;
+}
+
+.textswift-status {
+  border-radius: 999px;
+  padding: 3px 10px;
+  font-size: 11px;
+  font-weight: 700;
+  background: rgba(148, 163, 184, 0.24);
+  color: #e2e8f0;
+}
+
+.textswift-status.loading {
+  background: rgba(245, 158, 11, 0.22);
+  color: #fde68a;
+}
+
+.textswift-status.success {
+  background: rgba(16, 185, 129, 0.23);
+  color: #a7f3d0;
+}
+
+.textswift-status.error {
+  background: rgba(239, 68, 68, 0.28);
+  color: #fecaca;
+}
+
+.textswift-close {
+  border: 0;
+  background: transparent;
+  color: #9fbad0;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.textswift-body {
+  display: grid;
+  gap: 10px;
+  padding: 14px;
+}
+
+.textswift-caption {
+  font-size: 11px;
+  color: #8fadc6;
+}
+
+.textswift-selection,
+.textswift-output {
+  width: 100%;
+  border-radius: 12px;
+  border: 1px solid rgba(145, 188, 221, 0.2);
+  background: rgba(7, 20, 29, 0.92);
+  color: #edf7ff;
+  min-height: 84px;
+  padding: 10px;
+  resize: vertical;
+}
+
+.textswift-selection {
+  min-height: 74px;
+}
+
+.textswift-language-row,
+.textswift-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.textswift-language-row select {
+  flex: 1;
+  border-radius: 10px;
+  border: 1px solid rgba(148, 163, 184, 0.32);
+  background: #0b1925;
+  color: #dbeafe;
+  padding: 9px;
+}
+
+.textswift-button {
+  flex: 1;
+  border-radius: 10px;
+  border: 1px solid transparent;
+  padding: 9px 10px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: opacity 120ms ease;
+}
+
+.textswift-button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.textswift-primary {
+  background: linear-gradient(135deg, #0ea5e9, #22c55e);
+  color: #05131f;
+}
+
+.textswift-secondary {
+  background: #112231;
+  border-color: rgba(148, 163, 184, 0.28);
+  color: #d1e8ff;
+}
+
+.textswift-hint {
+  margin: 0;
+  min-height: 16px;
+  font-size: 11px;
+  color: #8eb4d3;
+}
+
+.textswift-hint.error {
+  color: #fca5a5;
+}
+
+.textswift-inline-shell {
+  position: fixed;
+  pointer-events: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  z-index: 2;
+}
+
+.textswift-inline-trigger {
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  border: 1px solid rgba(248, 250, 252, 0.2);
+  background: linear-gradient(145deg, #0c2030, #1b5678);
+  color: #d8f2ff;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.44);
+}
+
+.textswift-inline-trigger:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.textswift-inline-panel {
+  width: 340px;
+  border-radius: 14px;
+  border: 1px solid rgba(181, 220, 255, 0.26);
+  background: radial-gradient(circle at top, #0f2335, #071017 70%);
+  box-shadow: 0 18px 36px rgba(0, 0, 0, 0.52);
+  padding: 10px;
+  display: grid;
+  gap: 8px;
+  transform-origin: top left;
+  animation: textswift-inline-open 140ms ease;
+}
+
+@keyframes textswift-inline-open {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.textswift-inline-status {
+  font-size: 11px;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: rgba(148, 163, 184, 0.25);
+  color: #e2e8f0;
+}
+
+.textswift-inline-status.loading {
+  background: rgba(245, 158, 11, 0.22);
+  color: #fde68a;
+}
+
+.textswift-inline-status.success {
+  background: rgba(16, 185, 129, 0.23);
+  color: #a7f3d0;
+}
+
+.textswift-inline-status.error {
+  background: rgba(239, 68, 68, 0.28);
+  color: #fecaca;
+}
+
+.textswift-inline-result {
+  font-size: 12px;
+  line-height: 1.5;
+  border-radius: 10px;
+  border: 1px solid rgba(145, 188, 221, 0.2);
+  background: rgba(7, 20, 29, 0.92);
+  color: #edf7ff;
+  padding: 8px;
+  max-height: 120px;
+  overflow: auto;
+  white-space: pre-wrap;
+}
+
+.textswift-inline-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.textswift-inline-hint {
+  margin: 0;
+  font-size: 11px;
+  color: #8eb4d3;
+  min-height: 16px;
+}
+
+.textswift-inline-hint.error {
+  color: #fca5a5;
+}

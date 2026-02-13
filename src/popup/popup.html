@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TextSwift</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <main class="popup">
+      <header class="popup-header">
+        <div>
+          <p class="eyebrow">in-page translator</p>
+          <h1>TextSwift</h1>
+        </div>
+        <span id="state-chip" class="state-chip">Idle</span>
+      </header>
+
+      <section class="panel">
+        <label class="field-label" for="source-text">Source</label>
+        <textarea id="source-text" placeholder="Paste text to translate..."></textarea>
+
+        <div class="row">
+          <div class="field">
+            <label class="field-label" for="source-lang">From</label>
+            <select id="source-lang"></select>
+          </div>
+          <button id="swap-btn" type="button" class="icon-btn" title="Swap languages">⇄</button>
+          <div class="field">
+            <label class="field-label" for="target-lang">To</label>
+            <select id="target-lang"></select>
+          </div>
+        </div>
+
+        <div class="row actions">
+          <button id="translate-btn" type="button" class="primary-btn">Translate</button>
+        </div>
+
+        <label class="field-label" for="result-text">Result</label>
+        <textarea id="result-text" readonly placeholder="Translation output..."></textarea>
+
+        <div class="row actions">
+          <button id="retry-btn" type="button" class="ghost-btn" disabled>Retry</button>
+          <button id="copy-btn" type="button" class="ghost-btn" disabled>Copy</button>
+        </div>
+
+        <p id="status-message" class="status">텍스트를 입력하고 Translate를 누르세요.</p>
+      </section>
+    </main>
+
+    <script src="../common/message-types.js"></script>
+    <script src="../common/storage.js"></script>
+    <script src="popup.js"></script>
+  </body>
+</html>

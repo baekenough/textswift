@@ -1,0 +1,35 @@
+# Dependencies
+node_modules/
+
+# Build outputs
+dist/
+output/
+*.js.map
+*.tsbuildinfo
+
+# Package artifacts
+*.tgz
+
+# Environment variables
+.env
+
+# Codex auth (never commit)
+.codex/
+
+# Playwright
+.playwright-cli/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Empty placeholder files from previous build issues
+node
+npm
+rm
+tsc
+textswift@*

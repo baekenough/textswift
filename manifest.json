@@ -1,0 +1,23 @@
+{
+  "manifest_version": 3,
+  "name": "TextSwift",
+  "description": "Translate selected text on the web with a fast Codex-compatible workflow.",
+  "version": "0.1.0",
+  "action": {
+    "default_title": "TextSwift",
+    "default_popup": "src/popup/popup.html"
+  },
+  "background": {
+    "service_worker": "src/background/service-worker.js"
+  },
+  "permissions": ["activeTab", "storage", "nativeMessaging"],
+  "host_permissions": ["http://*/*", "https://*/*"],
+  "content_scripts": [
+    {
+      "matches": ["http://*/*", "https://*/*"],
+      "css": ["src/content/content.css"],
+      "js": ["src/common/message-types.js", "src/content/content.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}

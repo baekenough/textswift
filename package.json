@@ -1,0 +1,27 @@
+{
+  "name": "textswift",
+  "version": "0.1.0",
+  "private": true,
+  "description": "TextSwift Chrome extension for in-page translation",
+  "scripts": {
+    "clean": "rm -rf dist",
+    "build:ts": "tsc -p tsconfig.extension.json && tsc -p tsconfig.native.json",
+    "build:assets": "node scripts/build-assets.mjs",
+    "build": "npm run clean && npm run build:ts && npm run build:assets",
+    "typecheck": "tsc -p tsconfig.extension.json --noEmit && tsc -p tsconfig.native.json --noEmit",
+    "test:unit": "npm run build:ts >/dev/null && node --test tests/**/*.test.cjs",
+    "test": "npm run typecheck && npm run test:unit",
+    "benchmark": "bash scripts/benchmark-models.sh",
+    "smoke:native": "node scripts/native-host-smoke.mjs",
+    "smoke:native:mock": "node scripts/native-host-smoke.mjs --mock",
+    "smoke:playwright": "bash scripts/playwright-smoke.sh",
+    "smoke:inline": "bash scripts/playwright-inline-harness.sh",
+    "smoke:sites": "bash scripts/playwright-multi-site.sh",
+    "checklist": "bash scripts/manual-checklist.sh"
+  },
+  "devDependencies": {
+    "@types/chrome": "^0.0.285",
+    "@types/node": "^24.3.0",
+    "typescript": "^5.9.2"
+  }
+}
