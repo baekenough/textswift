@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "TextSwift",
+  "name": "TextSwift Beta",
   "description": "Translate selected text on the web with a fast Codex-compatible workflow.",
   "version": "0.1.0",
   "icons": {
