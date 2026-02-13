@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="assets/maki-promition-tile_1400x560.png" alt="TextSwift Banner" width="700">
+<img src="https://raw.githubusercontent.com/baekenough/textswift/main/assets/maki-promition-tile_1400x560.png" alt="TextSwift Banner" width="700">
 
 **Instant in-page translation powered by Codex**
 
@@ -16,7 +16,7 @@
 ## Demo
 
 <div align="center">
-<img src="assets/capture_1280x800.png" alt="TextSwift in action" width="720">
+<img src="https://raw.githubusercontent.com/baekenough/textswift/main/assets/capture_1280x800.png" alt="TextSwift in action" width="720">
 <p><em>Select text on any webpage → click the icon → instant translation</em></p>
 </div>
 
