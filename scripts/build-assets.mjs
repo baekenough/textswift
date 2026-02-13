@@ -18,7 +18,11 @@ const copyTargets = [
   ["scripts/native-host-smoke.mjs", "scripts/native-host-smoke.mjs"],
   ["scripts/playwright-smoke.sh", "scripts/playwright-smoke.sh"],
   ["scripts/playwright-multi-site.sh", "scripts/playwright-multi-site.sh"],
-  ["README.md", "README.md"]
+  ["README.md", "README.md"],
+  ["icons/icon-16.png", "icons/icon-16.png"],
+  ["icons/icon-32.png", "icons/icon-32.png"],
+  ["icons/icon-48.png", "icons/icon-48.png"],
+  ["icons/icon-128.png", "icons/icon-128.png"]
 ];
 
 for (const [from, to] of copyTargets) {

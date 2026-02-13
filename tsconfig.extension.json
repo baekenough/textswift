@@ -9,5 +9,6 @@
     "outDir": "dist/src",
     "isolatedModules": false
   },
-  "include": ["src/**/*.ts", "src/**/*.d.ts"]
+  "include": ["src/**/*.ts", "src/**/*.d.ts"],
+  "exclude": ["src/cli/**"]
 }

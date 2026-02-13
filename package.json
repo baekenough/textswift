@@ -1,14 +1,38 @@
 {
   "name": "textswift",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "description": "TextSwift Chrome extension for in-page translation",
+  "author": "baekenough",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/baekenough/textswift.git"
+  },
+  "homepage": "https://github.com/baekenough/textswift#readme",
+  "keywords": [
+    "textswift",
+    "translation",
+    "chrome-extension",
+    "codex",
+    "native-messaging"
+  ],
+  "bin": {
+    "textswift": "./dist/cli/setup.js"
+  },
+  "files": [
+    "dist/",
+    "LICENSE",
+    "README.md"
+  ],
   "scripts": {
     "clean": "rm -rf dist",
-    "build:ts": "tsc -p tsconfig.extension.json && tsc -p tsconfig.native.json",
+    "build:ts": "tsc -p tsconfig.extension.json && tsc -p tsconfig.native.json && tsc -p tsconfig.cli.json",
     "build:assets": "node scripts/build-assets.mjs",
     "build": "npm run clean && npm run build:ts && npm run build:assets",
-    "typecheck": "tsc -p tsconfig.extension.json --noEmit && tsc -p tsconfig.native.json --noEmit",
+    "typecheck": "tsc -p tsconfig.extension.json --noEmit && tsc -p tsconfig.native.json --noEmit && tsc -p tsconfig.cli.json --noEmit",
+    "postinstall": "node dist/cli/setup.js --postinstall || true",
+    "prepublishOnly": "npm run build",
     "test:unit": "npm run build:ts >/dev/null && node --test tests/**/*.test.cjs",
     "test": "npm run typecheck && npm run test:unit",
     "benchmark": "bash scripts/benchmark-models.sh",

@@ -1,7 +1,7 @@
 /// <reference path="../common/globals.d.ts" />
 
 (() => {
-  const MOUNT_VERSION = "2026-02-13.inline.v4";
+  const MOUNT_VERSION = "2026-02-13.inline.v7";
   const root = window as unknown as TextSwiftGlobal &
     Window & {
       __textswiftMountedVersion?: string;
@@ -49,6 +49,10 @@
   let lastSelectionRect: DOMRect | null = null;
   let lastPointerX = Math.round(window.innerWidth * 0.5);
   let lastPointerY = Math.round(window.innerHeight * 0.33);
+  let inlineFontSize = 14;
+  const FONT_SIZE_MIN = 12;
+  const FONT_SIZE_MAX = 24;
+  const FONT_SIZE_STEP = 2;
 
   const rootEl = document.createElement("div");
   rootEl.id = "textswift-root";
@@ -60,7 +64,14 @@
   fab.className = "textswift-fab";
   fab.type = "button";
   fab.title = "Open TextSwift";
-  fab.textContent = "TS";
+
+  const fabIcon = document.createElement("img");
+  fabIcon.className = "textswift-fab-icon";
+  fabIcon.src = typeof chrome !== "undefined" && chrome.runtime?.getURL
+    ? chrome.runtime.getURL("icons/icon-48.png")
+    : "";
+  fabIcon.alt = "TextSwift";
+  fab.appendChild(fabIcon);
 
   const panel = document.createElement("div");
   panel.className = "textswift-panel textswift-hidden";
@@ -179,7 +190,14 @@
   inlineTrigger.className = "textswift-inline-trigger";
   inlineTrigger.type = "button";
   inlineTrigger.title = "Translate selection";
-  inlineTrigger.textContent = "TS";
+
+  const triggerIcon = document.createElement("img");
+  triggerIcon.className = "textswift-inline-trigger-icon";
+  triggerIcon.src = typeof chrome !== "undefined" && chrome.runtime?.getURL
+    ? chrome.runtime.getURL("icons/icon-48.png")
+    : "";
+  triggerIcon.alt = "TextSwift";
+  inlineTrigger.appendChild(triggerIcon);
 
   const inlinePanel = document.createElement("div");
   inlinePanel.className = "textswift-inline-panel textswift-hidden";
@@ -210,7 +228,24 @@
   inlineClose.type = "button";
   inlineClose.textContent = "Close";
 
-  inlineActions.append(inlineCopy, inlineClose);
+  const inlineFontControls = document.createElement("div");
+  inlineFontControls.className = "textswift-font-controls";
+
+  const inlineFontDown = document.createElement("button");
+  inlineFontDown.className = "textswift-font-btn";
+  inlineFontDown.type = "button";
+  inlineFontDown.textContent = "A-";
+  inlineFontDown.title = "Decrease font size";
+
+  const inlineFontUp = document.createElement("button");
+  inlineFontUp.className = "textswift-font-btn";
+  inlineFontUp.type = "button";
+  inlineFontUp.textContent = "A+";
+  inlineFontUp.title = "Increase font size";
+
+  inlineFontControls.append(inlineFontDown, inlineFontUp);
+
+  inlineActions.append(inlineCopy, inlineFontControls, inlineClose);
   inlinePanel.append(inlineStatus, inlineResult, inlineActions, inlineHint);
   inlineShell.append(inlineTrigger, inlinePanel);
 
@@ -269,11 +304,25 @@
     event.stopPropagation();
     inlineSuppressed = false;
     suppressedSelectionText = "";
-    inlinePinned = true;
     clearInlineHideTimer();
+
+    // If panel is already visible, toggle it off
+    if (!inlinePanel.classList.contains("textswift-hidden")) {
+      inlinePanel.classList.add("textswift-hidden");
+      inlinePinned = false;
+      return;
+    }
+
+    inlinePinned = true;
+    inlinePanel.classList.remove("textswift-hidden");
+
+    // If already loading or has a result, just reshow panel without new request
+    if (inlineState === uiStates.LOADING || inlineState === uiStates.SUCCESS) {
+      return;
+    }
+
     const immediateText = pendingInlineText || captureInlineSelectionForAction();
     pendingInlineText = "";
-    inlinePanel.classList.remove("textswift-hidden");
     void requestInlineTranslate(immediateText);
   });
 
@@ -303,6 +352,22 @@
   inlineClose.addEventListener("mousedown", handleInlineClose);
   inlineClose.addEventListener("click", handleInlineClose);
 
+  inlineFontUp.addEventListener("click", (event) => {
+    event.stopPropagation();
+    if (inlineFontSize < FONT_SIZE_MAX) {
+      inlineFontSize += FONT_SIZE_STEP;
+      inlineResult.style.fontSize = `${inlineFontSize}px`;
+    }
+  });
+
+  inlineFontDown.addEventListener("click", (event) => {
+    event.stopPropagation();
+    if (inlineFontSize > FONT_SIZE_MIN) {
+      inlineFontSize -= FONT_SIZE_STEP;
+      inlineResult.style.fontSize = `${inlineFontSize}px`;
+    }
+  });
+
   document.addEventListener("mousedown", (event) => {
     const target = event.target as Node | null;
     if (!target) {
@@ -313,7 +378,7 @@
       clearInlineHideTimer();
       inlinePanel.classList.add("textswift-hidden");
       inlinePinned = false;
-      if (!selectedText) {
+      if (!selectedText && inlineState !== uiStates.LOADING) {
         hideInlineUi();
       }
     }
@@ -326,7 +391,7 @@
     clearInlineHideTimer();
     inlinePanel.classList.add("textswift-hidden");
     inlinePinned = false;
-    if (!selectedText) {
+    if (!selectedText && inlineState !== uiStates.LOADING) {
       hideInlineUi();
     }
   });
@@ -392,7 +457,9 @@
     }
 
     if (!inlineSelectionArmed) {
-      hideInlineUi();
+      if (inlineState !== uiStates.LOADING) {
+        hideInlineUi();
+      }
       if (!hasChromeRuntime) {
         translateButton.disabled = true;
         retryButton.disabled = true;
@@ -419,7 +486,9 @@
     if (!selectedText) {
       inlinePinned = false;
       translateButton.disabled = true;
-      scheduleInlineHide();
+      if (inlineState !== uiStates.LOADING) {
+        scheduleInlineHide();
+      }
 
       if (!hasChromeRuntime) {
         hint.classList.add("error");
@@ -591,7 +660,7 @@
     if (nextState === uiStates.LOADING) {
       inlineStatus.textContent = "Translating...";
       inlineStatus.classList.add("loading");
-      inlineTrigger.disabled = true;
+      inlineTrigger.disabled = false;
     } else if (nextState === uiStates.SUCCESS) {
       inlineStatus.textContent = "Done";
       inlineStatus.classList.add("success");
@@ -680,12 +749,19 @@
 
   function closeInlineForCurrentSelection(): void {
     inlinePinned = false;
+    clearInlineHideTimer();
+    inlinePanel.classList.add("textswift-hidden");
+
+    // During loading: keep trigger visible so user can reopen
+    if (inlineState === uiStates.LOADING) {
+      return;
+    }
+
     inlineSuppressed = true;
     suppressedSelectionText = selectedText.trim();
     pendingInlineText = "";
     inlineRequestToken += 1;
-    clearInlineHideTimer();
-    hideInlineUi();
+    inlineShell.classList.add("textswift-hidden");
     inlineResult.textContent = "번역 결과가 여기에 표시됩니다.";
     inlineCopy.disabled = true;
     setInlineState(uiStates.IDLE, "아이콘을 눌러 번역하세요.");
@@ -752,7 +828,7 @@
     const anchorRect = rect ?? createPointRect(lastPointerX, lastPointerY);
 
     const panelVisible = !inlinePanel.classList.contains("textswift-hidden");
-    const shellWidth = panelVisible ? 352 : 56;
+    const shellWidth = panelVisible ? 432 : 56;
     const shellHeight = panelVisible ? 260 : 56;
 
     let x = anchorRect.right + 10;

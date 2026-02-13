@@ -32,6 +32,8 @@
   box-shadow: 0 10px 26px rgba(0, 0, 0, 0.45);
   cursor: pointer;
   transition: transform 140ms ease, box-shadow 140ms ease;
+  padding: 6px;
+  overflow: hidden;
 }
 
 .textswift-fab:hover {
@@ -40,7 +42,7 @@
 }
 
 .textswift-panel {
-  width: 360px;
+  width: 420px;
   margin-top: 10px;
   border-radius: 18px;
   border: 1px solid rgba(181, 220, 255, 0.23);
@@ -121,7 +123,7 @@
   border: 1px solid rgba(145, 188, 221, 0.2);
   background: rgba(7, 20, 29, 0.92);
   color: #edf7ff;
-  min-height: 84px;
+  min-height: 100px;
   padding: 10px;
   resize: vertical;
 }
@@ -202,6 +204,8 @@
   font-weight: 700;
   cursor: pointer;
   box-shadow: 0 10px 24px rgba(0, 0, 0, 0.44);
+  padding: 6px;
+  overflow: hidden;
 }
 
 .textswift-inline-trigger:disabled {
@@ -210,7 +214,7 @@
 }
 
 .textswift-inline-panel {
-  width: 340px;
+  width: 420px;
   border-radius: 14px;
   border: 1px solid rgba(181, 220, 255, 0.26);
   background: radial-gradient(circle at top, #0f2335, #071017 70%);
@@ -261,14 +265,14 @@
 }
 
 .textswift-inline-result {
-  font-size: 12px;
+  font-size: 14px;
   line-height: 1.5;
   border-radius: 10px;
   border: 1px solid rgba(145, 188, 221, 0.2);
   background: rgba(7, 20, 29, 0.92);
   color: #edf7ff;
-  padding: 8px;
-  max-height: 120px;
+  padding: 12px;
+  max-height: 200px;
   overflow: auto;
   white-space: pre-wrap;
 }
@@ -287,4 +291,40 @@
 
 .textswift-inline-hint.error {
   color: #fca5a5;
+}
+
+.textswift-font-controls {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.textswift-font-btn {
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  border: 1px solid rgba(148, 163, 184, 0.28);
+  background: #112231;
+  color: #d1e8ff;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 120ms ease;
+  pointer-events: auto;
+}
+
+.textswift-font-btn:hover {
+  background: #1a3349;
+}
+
+.textswift-fab-icon,
+.textswift-inline-trigger-icon {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: inherit;
+  pointer-events: none;
 }

@@ -66,47 +66,52 @@ Additional languages planned for future releases.
 
 ## Installation
 
+### Quick Setup (npm)
+
+```bash
+npm install -g textswift
+```
+
+This automatically:
+1. Detects your Codex CLI installation
+2. Registers the Native Messaging Host
+3. Opens `chrome://extensions` for extension setup
+
+If codex is not logged in, run:
+
+```bash
+codex login
+```
+
+### Chrome Extension
+
+**From Chrome Web Store** (recommended):
+> Coming soon — install via unpacked mode for now.
+
+**Unpacked (development)**:
+1. Open `chrome://extensions`
+2. Enable **Developer mode**
+3. Click **Load unpacked** → select the `dist/` folder
+4. Copy the extension ID, then run:
+
+```bash
+textswift setup YOUR_EXTENSION_ID
+```
+
+### CLI Commands
+
+| Command | Description |
+|---------|-------------|
+| `textswift setup [id]` | Register native host (id = Chrome extension ID) |
+| `textswift status` | Show installation status |
+| `textswift uninstall` | Remove native host manifest |
+
 ### Prerequisites
 
 - Node.js 18+ and npm
 - Google Chrome
-- Codex CLI installed with an active subscription
-- macOS (for native host installation script)
-
-### Build Steps
-
-1. **Clone the repository** (if applicable) and navigate to the project directory.
-
-2. **Install dependencies**:
-
-   ```bash
-   npm install
-   ```
-
-3. **Build the extension and native host artifacts**:
-
-   ```bash
-   npm run build
-   ```
-
-4. **Load unpacked extension in Chrome**:
-
-   - Open `chrome://extensions`
-   - Enable **Developer mode** (toggle in top-right corner)
-   - Click **Load unpacked**
-   - Select the `dist/` folder from the project directory
-
-5. **Install the native messaging host**:
-
-   After loading the extension, copy the extension ID from `chrome://extensions` and run:
-
-   ```bash
-   bash scripts/install-native-host.sh --extension-id YOUR_EXTENSION_ID
-   ```
-
-   Replace `YOUR_EXTENSION_ID` with the actual extension ID from Chrome.
-
-6. **Restart Chrome** to complete the installation.
+- [Codex CLI](https://github.com/openai/codex) installed and logged in
+- macOS (Windows/Linux support planned)
 
 ---
 
