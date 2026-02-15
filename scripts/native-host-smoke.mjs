@@ -21,7 +21,7 @@ const translateResponse = await requestHost({
   text: "Kiro helps teams ship reliable software quickly.",
   sourceLang: "auto",
   targetLang: "ko",
-  model: "gpt-5.3-codex-low"
+  model: "gpt-5.3-spark"
 });
 
 if (!translateResponse.ok || typeof translateResponse.translatedText !== "string" || !translateResponse.translatedText.trim()) {
@@ -34,7 +34,7 @@ const invalidResponse = await requestHost({
   text: "",
   sourceLang: "auto",
   targetLang: "ko",
-  model: "gpt-5.3-codex-low"
+  model: "gpt-5.3-spark"
 });
 
 if (invalidResponse.ok !== false || invalidResponse.errorCode !== "EMPTY_TEXT") {

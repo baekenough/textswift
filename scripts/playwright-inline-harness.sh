@@ -62,7 +62,7 @@ Textarea selection should also trigger the inline icon visibility logic.
               cb({
                 ok: true,
                 translatedText: "ok",
-                model: "gpt-5.3-codex-low",
+                model: "gpt-5.3-spark",
                 latencyMs: 1,
                 transport: "mock"
               });

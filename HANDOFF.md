@@ -25,7 +25,7 @@ Phase strategy:
 - Target site for initial UX: `kiro.dev`.
 - Spark is not available for general use in this project right now.
 - For testing, use either:
-  - `gpt-5.3-codex-low`
+  - `gpt-5.3-spark`
   - `gpt-5.1-codex-mini`
 - Priority is speed. Use whichever is faster in real measurements.
 
@@ -45,7 +45,7 @@ Use this architecture:
 - Returns translated text to extension.
 
 3. Translation backend behavior
-- First run benchmark: compare `gpt-5.3-codex-low` vs `gpt-5.1-codex-mini` on same short/medium/long text.
+- First run benchmark: compare `gpt-5.3-spark` vs `gpt-5.1-codex-mini` on same short/medium/long text.
 - Persist fastest model choice in local extension storage.
 - Provide a fallback model if primary fails.
 
@@ -196,7 +196,7 @@ Do not guess. Measure.
 Benchmark plan:
 1. Prepare 3 payloads: short (1 sentence), medium (1 paragraph), long (5 paragraphs).
 2. Run 5 iterations per model:
-   - `gpt-5.3-codex-low`
+   - `gpt-5.3-spark`
    - `gpt-5.1-codex-mini`
 3. Record p50 and p95 latency + failure count.
 4. Choose model with lower p95 and acceptable quality.
@@ -204,7 +204,7 @@ Benchmark plan:
 
 Default if benchmark not run yet:
 - Start with `gpt-5.1-codex-mini` as likely lower latency baseline.
-- Fallback to `gpt-5.3-codex-low` on repeated failures.
+- Fallback to `gpt-5.3-spark` on repeated failures.
 
 ## 9) Quality and Safety Requirements
 

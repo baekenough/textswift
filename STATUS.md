@@ -13,7 +13,7 @@ Workspace: `/Users/sangyi/workspace/business/textswift`
 
 ## Model policy
 
-- Primary: `gpt-5.3-codex-low`
+- Primary: `gpt-5.3-spark`
 - Fallback: `gpt-5.1-codex-mini`
 - Benchmark script persists preferred model based on measured latency.
 

@@ -5,7 +5,7 @@ import { fileURLToPath } from "node:url";
 const root = resolve(fileURLToPath(new URL("..", import.meta.url)));
 const hostPath = resolve(root, "dist/native/host/textswift-host.js");
 
-const MODELS = ["gpt-5.1-codex-mini", "gpt-5.3-codex-low"];
+const MODELS = ["gpt-5.1-codex-mini", "gpt-5.3-spark"];
 const ITERATIONS = normalizeIterations(process.env.TEXTSWIFT_BENCHMARK_ITERATIONS);
 const HOST_MODE = process.env.TEXTSWIFT_BENCHMARK_MODE === "mock" ? "mock" : "codex";
 

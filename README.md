@@ -159,7 +159,7 @@ TextSwift uses a primary/fallback model chain:
 
 | Role | Model | Trait |
 |------|-------|-------|
-| Primary | `gpt-5.3-codex-low` | Faster, cost-effective |
+| Primary | `gpt-5.3-spark` | Faster, cost-effective |
 | Fallback | `gpt-5.1-codex-mini` | Reliable backup |
 
 ### Benchmarking
