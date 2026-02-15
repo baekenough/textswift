@@ -1,6 +1,6 @@
 type TextSwiftUiState = "idle" | "loading" | "success" | "error";
 type TextSwiftTransport = "mock" | "native";
-type TextSwiftModel = "gpt-5.1-codex-mini" | "gpt-5.3-codex-low";
+type TextSwiftModel = "gpt-5.1-codex-mini" | "gpt-5.3-spark";
 
 type TextSwiftMessageType =
   | "textswift/translate-request"
@@ -31,7 +31,7 @@ interface TextSwiftUiStateMap {
 }
 
 interface TextSwiftModelMap {
-  FAST_PRIMARY: "gpt-5.3-codex-low";
+  FAST_PRIMARY: "gpt-5.3-spark";
   FAST_FALLBACK: "gpt-5.1-codex-mini";
 }
 
