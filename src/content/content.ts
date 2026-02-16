@@ -316,8 +316,10 @@
     inlinePinned = true;
     inlinePanel.classList.remove("textswift-hidden");
 
-    // If already loading or has a result, just reshow panel without new request
-    if (inlineState === uiStates.LOADING || inlineState === uiStates.SUCCESS) {
+    // If already loading or has a result for the same text, just reshow panel without new request
+    const nextText = (pendingInlineText || selectedText).trim();
+    if ((inlineState === uiStates.LOADING || inlineState === uiStates.SUCCESS) &&
+        lastRequest && lastRequest.text === nextText) {
       return;
     }
 
