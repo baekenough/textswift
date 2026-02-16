@@ -237,7 +237,7 @@ async function buildCodexExecPlan(request: TranslateRequest): Promise<CodexExecP
       "-m",
       request.model,
       "-c",
-      `reasoning_effort="${CODEX_REASONING_EFFORT}"`,
+      `model_reasoning_effort="${CODEX_REASONING_EFFORT}"`,
       "-c",
       'reasoning_summaries="none"',
       "--skip-git-repo-check",
