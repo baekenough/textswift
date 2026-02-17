@@ -21,7 +21,7 @@
   "background": {
     "service_worker": "src/background/service-worker.js"
   },
-  "permissions": ["activeTab", "storage", "nativeMessaging"],
+  "permissions": ["storage", "nativeMessaging"],
   "host_permissions": ["http://*/*", "https://*/*"],
   "content_scripts": [
     {
