@@ -5,7 +5,7 @@ import { writeNativeHostManifest, writeLauncher, type ManifestOptions } from "..
 import { currentPlatform } from "../utils/platform.js";
 
 // Chrome Web Store extension ID (set after publishing)
-const WEB_STORE_EXTENSION_ID = "";
+const WEB_STORE_EXTENSION_ID = "bkgfdbpinhpdcclcmjhfbmccojlapalo";
 
 export function runSetup(cliDir: string, extensionId?: string, isPostinstall = false): void {
   const prefix = isPostinstall ? "[textswift postinstall]" : "[textswift setup]";

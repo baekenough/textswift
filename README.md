@@ -76,7 +76,7 @@ codex login
 ### Chrome Extension
 
 **From Chrome Web Store** (recommended):
-> Coming soon — install via unpacked mode for now.
+> [TextSwift Beta](https://chromewebstore.google.com/detail/textswift-beta/bkgfdbpinhpdcclcmjhfbmccojlapalo)
 
 **Unpacked (development)**:
 1. Open `chrome://extensions`
@@ -213,7 +213,7 @@ Extension was reloaded while content scripts were active. Close and reopen the a
 - [x] UI-only extension (popup + content widget + state UI)
 - [x] Native messaging channel connected
 - [x] Real `codex exec` translation with timeout/error handling and fallback model chain
-- [ ] Chrome Web Store publishing
+- [x] Chrome Web Store publishing
 - [ ] Windows / Linux support
 
 ---

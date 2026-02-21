@@ -76,7 +76,7 @@ codex login
 ### Chrome 확장
 
 **Chrome 웹 스토어** (권장):
-> 준비 중 — 현재는 압축 해제 모드로 설치하세요.
+> [TextSwift Beta](https://chromewebstore.google.com/detail/textswift-beta/bkgfdbpinhpdcclcmjhfbmccojlapalo)
 
 **압축 해제 (개발 모드)**:
 1. `chrome://extensions` 열기
@@ -213,7 +213,7 @@ TEXTSWIFT_BENCHMARK_MODE=mock bash scripts/benchmark-models.sh
 - [x] UI 전용 확장 (팝업 + 콘텐츠 위젯 + 상태 UI)
 - [x] 네이티브 메시징 채널 연결
 - [x] 실제 `codex exec` 번역 (타임아웃/오류 처리 및 폴백 모델 체인)
-- [ ] Chrome 웹 스토어 출시
+- [x] Chrome 웹 스토어 출시
 - [ ] Windows / Linux 지원
 
 ---
